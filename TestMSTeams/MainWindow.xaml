@@ -1,0 +1,46 @@
+﻿<Window x:Class="TestMSTeams.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestMSTeams"
+        mc:Ignorable="d"
+        Title="MS Graph login test"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <StackPanel Margin="20">
+            <StackPanel Orientation="Horizontal">
+            <Button Content="Client Credentials" Click="ClientCredentials_OnClick" Margin="10" Padding="10,0"></Button>
+            <Button Content="Integrated Windows Provider" Click="IntegratedWindowsProvider_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Interactive Provider" Click="InteractiveProvider_OnClick" Margin="10" Padding="10,0"></Button>
+            </StackPanel>
+            <DockPanel>
+                <Label Content="User ID" DockPanel.Dock="Left" Margin="5,10"/>
+                <TextBox x:Name="TxtUserId" Margin="10" TextChanged="TxtUserId_OnTextChanged" VerticalAlignment="Center"/>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="GetPresence" Click="GetPresence_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Available" Click="SetAvailable_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Busy" Click="SetBusy_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="DoNotDisturb" Click="SetDoNotDisturb_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="BeRightBack" Click="SetBeRightBack_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Away" Click="SetAway_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Offline" Click="SetOffline_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Reset" Click="Reset_OnClick" Margin="10" Padding="10,0"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Available/Available" Click="SetAvailableAvailable_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Busy/InCall" Click="SetBusyInCall_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Busy/InAConferenceCall" Click="SetBusyInAConferenceCall_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="DoNotDisturb/Presenting" Click="SetDoNotDisturbPresenting_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Away/Away" Click="SetAwayAway_OnClick" Margin="10" Padding="10,0"></Button>
+                <Button Content="Reset" Click="Reset2_OnClick" Margin="10" Padding="10,0"></Button>
+            </StackPanel>
+            <TextBlock x:Name="TxtUser" Margin="10"></TextBlock>
+            <TextBlock x:Name="TxtPresence" Margin="10"></TextBlock>
+            <!-- <TextBox x:Name="TxtToken" Margin="10"/> -->
+            
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMSTeams", "TestMSTeams\TestMSTeams.csproj", "{1988C3BD-FDC5-40C2-ACEC-5ED596B5A7DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{08E22BCB-4EBE-465D-BFD3-C2F741F0226B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pluginimpl", "pluginimpl\pluginimpl.csproj", "{001ED634-0F3B-4C0B-B488-6EEEF5B3CBD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1988C3BD-FDC5-40C2-ACEC-5ED596B5A7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1988C3BD-FDC5-40C2-ACEC-5ED596B5A7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1988C3BD-FDC5-40C2-ACEC-5ED596B5A7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1988C3BD-FDC5-40C2-ACEC-5ED596B5A7DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E22BCB-4EBE-465D-BFD3-C2F741F0226B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E22BCB-4EBE-465D-BFD3-C2F741F0226B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E22BCB-4EBE-465D-BFD3-C2F741F0226B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E22BCB-4EBE-465D-BFD3-C2F741F0226B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001ED634-0F3B-4C0B-B488-6EEEF5B3CBD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001ED634-0F3B-4C0B-B488-6EEEF5B3CBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001ED634-0F3B-4C0B-B488-6EEEF5B3CBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001ED634-0F3B-4C0B-B488-6EEEF5B3CBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22170FE6-D88D-4950-8554-8B700A7A0180}
+	EndGlobalSection
+EndGlobal
