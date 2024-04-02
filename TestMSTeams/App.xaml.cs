@@ -20,15 +20,20 @@ namespace TestMSTeams
 
     public App()
     {
-      var tenantId=Environment.GetEnvironmentVariable("TENANT_ID") ?? throw new ArgumentException("NULL TENANT_ID");
-      var clientId=Environment.GetEnvironmentVariable("CLIENT_ID") ?? throw new ArgumentException("NULL CLIENT_ID");
+      var tenantId=RequireEnvVar("TENANT_ID");
+      var clientId=RequireEnvVar("CLIENT_ID");
       var userId=Environment.GetEnvironmentVariable("USER_ID");
       var useProxy=Environment.GetEnvironmentVariable("USE_PROXY")=="true";
       var redirectUrl=Environment.GetEnvironmentVariable("REDIRECT_URL") ?? "http://localhost";
 
-      _pluginPath = Environment.GetEnvironmentVariable("PLUGIN-PATH") ?? throw new ArgumentException("NULL PLUGIN-PATH");
-      _pluginFactoryName = Environment.GetEnvironmentVariable("PLUGIN_FACTORY") ?? throw new ArgumentException("NULL PLUGIN_FACTORY");
-      _configData = new ConfigData(tenantId, clientId, null, userId, useProxy, redirectUrl);
+      _pluginPath = RequireEnvVar("PLUGIN-PATH");
+      _pluginFactoryName = RequireEnvVar("PLUGIN_FACTORY");
+      _configData = new ConfigData(tenantId, clientId, userId, useProxy, redirectUrl);
+    }
+
+    private static string RequireEnvVar(string tenantIdVar)
+    {
+      return Environment.GetEnvironmentVariable(tenantIdVar) ?? throw new ArgumentException("NULL " + tenantIdVar);
     }
 
     protected override void OnStartup(StartupEventArgs e)
