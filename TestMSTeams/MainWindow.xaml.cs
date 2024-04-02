@@ -24,66 +24,11 @@ namespace TestMSTeams
     private static bool useProxy = true;
 
     
-    private GraphServiceClient _graphClient;
+    private GraphServiceClient _graphClient = null!;
 
     public MainWindow()
     {
       InitializeComponent();
-    }
-
-    /**
-     * Does Client Credentials access
-     * https://learn.microsoft.com/en-us/graph/sdks/choose-authentication-providers?tabs=CS#client-credentials-provider
-     */
-    private async void ClientCredentials_OnClick(object sender, RoutedEventArgs e)
-    {
-
-      var scopes = new[] { "https://graph.microsoft.com/.default" };
-
-      try
-      {
-        var app = ConfidentialClientApplicationBuilder
-          .Create(clientId)
-          .WithTenantId(tenantId)
-          .WithClientSecret(clientSecret)
-          .Build();
-
-        var authProvider = new DelegateAuthenticationProvider(async (request) => {
-          AuthenticationResult result = null;
-          try
-          {
-            result = await app.AcquireTokenForClient(scopes).ExecuteAsync();
-          }
-          catch (Exception ex)
-          {
-            ShowError(ex);
-          }
-
-          if (result != null)
-          {
-            var accessToken = result.AccessToken;
-            request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
-          }
-        });
-
-        // set proxy
-        IWebProxy proxy = null;
-        if (useProxy)
-        {
-          proxy = WebRequest.DefaultWebProxy;
-          proxy.Credentials = CredentialCache.DefaultCredentials;
-        }
-
-        var httpClient = GraphClientFactory.Create(authProvider, proxy: proxy);
-        _graphClient = new GraphServiceClient(httpClient);
-
-        await TestGraphClient(_graphClient, false);
-      }
-      catch (Exception ex)
-      {
-        MessageBox.Show(ex.ToString());
-      }
-      
     }
 
     /**
@@ -235,7 +180,10 @@ namespace TestMSTeams
         }
 
         TxtUser.Text = $"user: {user?.DisplayName}\nmail: {user?.Mail}\nID: {user?.Id}";
-        TxtUserId.Text = userId;
+        if (userId != null)
+        {
+          TxtUserId.Text = userId;
+        }
       }
       catch (Exception ex)
       {
