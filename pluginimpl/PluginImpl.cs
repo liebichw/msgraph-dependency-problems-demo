@@ -49,11 +49,19 @@ namespace pluginimpl
       await SetCurrentUserInfo(_gsc);
     }
 
-    public Task<UserData> GetUser()
+    public async Task<UserData> GetUser()
     {
       if (_gsc != null)
       {
-        throw new NotImplementedException();
+        var user = await _gsc.Me.GetAsync();
+        if (user != null)
+        {
+          return new UserData(user.Id,user.DisplayName,user.Mail);
+        }
+        else
+        {
+          return null;
+        }
       }
 
       throw new Exception("Not logged in yet");
