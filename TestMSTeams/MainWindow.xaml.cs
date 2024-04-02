@@ -13,6 +13,7 @@ namespace TestMSTeams
   public partial class MainWindow
   {
     private readonly IPlugin _plugin;
+    private string? _userId;
 
     public MainWindow(ConfigData configData, string pluginPath,string pluginFactoryName)
     {
@@ -61,12 +62,12 @@ namespace TestMSTeams
       try
       {
         var user = await _plugin.GetUser();
-        var userId = user?.Id;
+        _userId = user?.Id;
 
         TxtUser.Text = $"user: {user?.DisplayName}\nmail: {user?.Email}\nID: {user?.Id}";
-        if (userId != null)
+        if (_userId != null)
         {
-          TxtUserId.Text = userId;
+          TxtUserId.Text = _userId;
         }
       }
       catch (Exception ex)
@@ -77,7 +78,15 @@ namespace TestMSTeams
 
    private async void GetPresence_OnClick(object sender, RoutedEventArgs e)
     {
-      var presence = await _plugin.GetPresenceData();
+      PresenceData presence;
+      if (_userId!=null)
+      {
+        presence = await _plugin.GetPresenceData(_userId); 
+      }
+      else
+      {
+        presence = null;
+      }
       TxtPresence.Text = $"Availability: {presence?.Availability}, Activity: {presence?.Activity}";
     }
   }

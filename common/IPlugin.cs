@@ -70,7 +70,7 @@ namespace common
   {
     Task Login(LoginMode loginMode);
     Task<UserData> GetUser();
-    Task<PresenceData> GetPresenceData();
+    Task<PresenceData> GetPresenceData(string userId);
   }
 
   public interface IPluginFactory

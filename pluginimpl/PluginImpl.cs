@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using common;
 using Microsoft.Graph;
-using Microsoft.Graph.Models;
 using Microsoft.Identity.Client;
 using Microsoft.Kiota.Abstractions.Authentication;
 
@@ -67,11 +65,15 @@ namespace pluginimpl
       throw new Exception("Not logged in yet");
     }
 
-    public Task<PresenceData> GetPresenceData()
+    public async Task<PresenceData> GetPresenceData(string userId)
     {
       if (_gsc!=null)
       {
-        throw new NotImplementedException(); 
+        var presence = await _gsc.Users[_userId].Presence.GetAsync();
+        if (presence != null)
+        {
+          return new PresenceData(presence.Availability, presence.Activity);
+        }
       }
       throw new Exception("Not logged in yet");
     }
@@ -121,7 +123,6 @@ namespace pluginimpl
         // use AcquireTokenSilent according to https://aka.ms/msal-net-throttling
         // see https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token
 
-        var provider = "LoginMode: " + _loginMode;
         AuthenticationResult result;
         var accounts = await _app.GetAccountsAsync();
 
@@ -136,7 +137,7 @@ namespace pluginimpl
           var firstAcc = accounts.FirstOrDefault();
           result = await _app.AcquireTokenSilent(scopes, firstAcc).ExecuteAsync();
         }
-        catch (MsalUiRequiredException e)
+        catch (MsalUiRequiredException)
         {
           if (_loginMode == LoginMode.DIALOG)
           {
