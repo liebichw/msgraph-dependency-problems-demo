@@ -206,58 +206,8 @@ namespace TestMSTeams
       return null;
     }
 
-    private async Task SetUserPreferredPresence(string availability, string activity)
-    {
-      try
-      {
-        await _graphClient.Users[userId].Presence.SetUserPreferredPresence(availability, activity).Request().PostAsync();
-      }
-      catch (Exception ex)
-      {
-        ShowError(ex);
-      }
-    }
-
-    private async Task ClearUserPreferredPresence()
-    {
-      try
-      {
-        await _graphClient.Users[userId].Presence.ClearUserPreferredPresence().Request().PostAsync();
-      }
-      catch (Exception ex)
-      {
-        ShowError(ex);
-      }
-    }
-
-    private async Task SetPresence(string availability, string activity)
-    {
-      try
-      {
-        await _graphClient.Users[userId].Presence.SetPresence(availability, activity, sessionId).Request().PostAsync();
-      }
-      catch (Exception ex)
-      {
-        ShowError(ex);
-      }
-    }
-
-    private async Task ClearPresence()
-    {
-      try
-      {
-        await _graphClient.Users[userId].Presence.ClearPresence(sessionId).Request().PostAsync();
-      }
-      catch (Exception ex)
-      {
-        ShowError(ex);
-      }
-    }
     private void ShowError(Exception exception)
     {
-      // var odataerror = exception as ODataError;
-
-      // MessageBox.Show($"ERROR: \nCode: {odataerror?.Error?.Code}\nMessage:{odataerror?.Error?.Message}\n\nexception:" + exception);
       MessageBox.Show($"ERROR: \n\nexception:" + exception);
     }
 
@@ -268,73 +218,8 @@ namespace TestMSTeams
       TxtPresence.Text = $"Availability: {presence?.Availability}, Activity: {presence?.Activity}";
     }
 
-    private async void SetAvailable_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetUserPreferredPresence("Available", "Available");
-    }
 
-    private async void SetBusy_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetUserPreferredPresence("Busy", "Busy");
-    }
-
-    private async void SetDoNotDisturb_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetUserPreferredPresence("DoNotDisturb", "DoNotDisturb");
-    }
-
-    private async void SetBeRightBack_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetUserPreferredPresence("BeRightBack", "BeRightBack");
-    }
-
-    private async void SetAway_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetUserPreferredPresence("Away", "Away");
-    }
-
-    private async void SetOffline_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetUserPreferredPresence("Offline", "OffWork");
-    }
-
-    private async void Reset_OnClick(object sender, RoutedEventArgs e)
-    {
-      await ClearUserPreferredPresence();
-    }
-
-
-    private async void SetAvailableAvailable_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetPresence("Available", "Available");
-    }
-
-    private async void SetBusyInCall_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetPresence("Busy", "InACall");
-    }
-
-    private async void SetBusyInAConferenceCall_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetPresence("Busy", "InAConferenceCall");
-    }
-
-    private async void SetDoNotDisturbPresenting_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetPresence("DoNotDisturb", "Presenting");
-    }
-
-    private async void SetAwayAway_OnClick(object sender, RoutedEventArgs e)
-    {
-      await SetPresence("Away", "Away");
-    }
-
-    private async void Reset2_OnClick(object sender, RoutedEventArgs e)
-    {
-      await ClearPresence();
-    }
-
-    private async void TxtUserId_OnTextChanged(object sender, TextChangedEventArgs e)
+    private void TxtUserId_OnTextChanged(object sender, TextChangedEventArgs e)
     {
       if (!string.IsNullOrEmpty(TxtUserId.Text))
       {

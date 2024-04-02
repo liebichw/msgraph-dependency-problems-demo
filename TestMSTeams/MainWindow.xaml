@@ -19,26 +19,12 @@
             </DockPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Content="GetPresence" Click="GetPresence_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Available" Click="SetAvailable_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Busy" Click="SetBusy_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="DoNotDisturb" Click="SetDoNotDisturb_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="BeRightBack" Click="SetBeRightBack_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Away" Click="SetAway_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Offline" Click="SetOffline_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Reset" Click="Reset_OnClick" Margin="10" Padding="10,0"></Button>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Available/Available" Click="SetAvailableAvailable_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Busy/InCall" Click="SetBusyInCall_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Busy/InAConferenceCall" Click="SetBusyInAConferenceCall_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="DoNotDisturb/Presenting" Click="SetDoNotDisturbPresenting_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Away/Away" Click="SetAwayAway_OnClick" Margin="10" Padding="10,0"></Button>
-                <Button Content="Reset" Click="Reset2_OnClick" Margin="10" Padding="10,0"></Button>
-            </StackPanel>
+            <StackPanel Orientation="Horizontal"/>
             <TextBlock x:Name="TxtUser" Margin="10"></TextBlock>
             <TextBlock x:Name="TxtPresence" Margin="10"></TextBlock>
             <!-- <TextBox x:Name="TxtToken" Margin="10"/> -->
-            
+
         </StackPanel>
 
     </Grid>
