@@ -15,8 +15,19 @@ namespace TestMSTeams
     private readonly IPlugin _plugin;
     private string? _userId;
 
-    public MainWindow(ConfigData configData, string pluginPath,string pluginFactoryName)
+    public MainWindow()
     {
+      var tenantId = RequireEnvVar("TENANT_ID");
+      var clientId = RequireEnvVar("CLIENT_ID");
+      var userId = Environment.GetEnvironmentVariable("USER_ID");
+      var useProxy = Environment.GetEnvironmentVariable("USE_PROXY") == "true";
+      var redirectUrl = Environment.GetEnvironmentVariable("REDIRECT_URL") ?? "http://localhost";
+      var configData = new ConfigData(tenantId, clientId, userId, useProxy, redirectUrl);
+
+      var pluginPath = RequireEnvVar("PLUGIN_PATH");
+      var pluginFactoryName = RequireEnvVar("PLUGIN_FACTORY");
+
+
       if (pluginFactoryName == null) throw new ArgumentNullException(nameof(pluginFactoryName));
       var assembly = Assembly.LoadFile(pluginPath) ?? throw new ArgumentException("Canot load assembly "+pluginPath);
 
@@ -25,7 +36,11 @@ namespace TestMSTeams
       InitializeComponent();
     }
 
-    
+    private static string RequireEnvVar(string tenantIdVar)
+    {
+      return Environment.GetEnvironmentVariable(tenantIdVar) ?? throw new ArgumentException("NULL " + tenantIdVar);
+    }
+
     private async void IntegratedWindowsProvider_OnClick(object sender, RoutedEventArgs e)
     {
       await DoTestLogin(LoginMode.INTEGRATED_WINDOWS);
