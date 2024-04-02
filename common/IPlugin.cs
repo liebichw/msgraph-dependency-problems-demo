@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace common
 {
@@ -40,7 +41,7 @@ namespace common
 
   public interface IPlugin
   {
-    
+    Task Login(LoginMode loginMode);
   }
 
   public interface IPluginFactory
