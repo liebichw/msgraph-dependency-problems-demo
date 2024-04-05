@@ -8,7 +8,7 @@ try {
     $ENV:TENANT_ID="<PLEASE INSERT TENANT ID HERE>"
     $ENV:CLIENT_ID="<PLEASE INSERT CLIENT ID HERE>"
     $ENV:REDIRECT_URL="<PLEASE INSERT REDIRECT URL HERE>"
-    $PluginPath=$(Join-Path "." "plugin" "pluginimpl.dll")
+    $PluginPath=$(Join-Path "." "pluginimpl.dll")
     Write-Host "PluginPath = $PluginPath"
     $ENV:PLUGIN_PATH=$(Resolve-Path "$PluginPath")
     $ENV:PLUGIN_FACTORY="pluginimpl.PluginMsGraph5Factory"
