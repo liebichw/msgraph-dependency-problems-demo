@@ -85,7 +85,16 @@ namespace TestMSTeams
       }
       catch (Exception ex)
       {
-        MessageBox.Show(ex.ToString());
+        string messageBoxText;
+        try
+        {
+          messageBoxText = ex.ToString();
+        }
+        catch (Exception e2)
+        {
+          messageBoxText = "ex.ToString throw 2nd exception: " + e2;
+        }
+        MessageBox.Show(messageBoxText);
       }
     }
 
