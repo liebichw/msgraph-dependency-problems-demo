@@ -1,6 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace common
 {
@@ -8,24 +6,22 @@ namespace common
   {
     public string TenantId { get; }
     public string ClientId { get; }
-    public string UserId { get; }
     public bool UseProxy { get; }
     public string RedirectUrl { get; }
 
-    public ConfigData(string tenantId, string clientId, string userId, bool useProxy, string redirectUrl)
+    public ConfigData(string tenantId, string clientId, bool useProxy, string redirectUrl)
     {
       TenantId = tenantId;
       ClientId = clientId;
-      UserId = userId;
       UseProxy = useProxy;
       RedirectUrl = redirectUrl;
     }
 
     public override string ToString()
     {
-      return string.Format("ConfigData: {0}: {1}, {2}: {3}, {4}: {5}, {6}: {7}, {8}: {9}", nameof(TenantId), TenantId,
-        nameof(ClientId), ClientId, nameof(UserId), UserId, nameof(UseProxy), UseProxy, nameof(RedirectUrl),
-        RedirectUrl);
+      return
+        string.Format("ConfigData: {0}: {1}, {2}: {3}, {4}: {5}, {6}: {7}", nameof(TenantId), TenantId,
+          nameof(ClientId), ClientId, nameof(UseProxy), UseProxy, nameof(RedirectUrl), RedirectUrl);
     }
   }
 

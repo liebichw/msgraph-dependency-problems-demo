@@ -78,7 +78,7 @@ namespace pluginimpl
       throw new Exception("Not logged in yet");
     }
 
-    private async Task SetCurrentUserInfo(GraphServiceClient graphClient)
+    private async Task SetCurrentUserInfo(BaseGraphServiceClient graphClient)
     {
 
       if (graphClient == null)
@@ -89,11 +89,7 @@ namespace pluginimpl
       var user = await graphClient.Me.GetAsync();
       if (user != null)
       {
-        if (user.Id == null)
-        {
-          throw new Exception("Teams user '" + user.Mail + "' has null ID!");
-        }
-        _userId = user.Id;
+        _userId = user.Id ?? throw new Exception("Teams user '" + user.Mail + "' has null ID!");
       }
       else
       {

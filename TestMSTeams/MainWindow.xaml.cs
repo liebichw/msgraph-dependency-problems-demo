@@ -22,10 +22,9 @@ namespace TestMSTeams
       {
         var tenantId = RequireEnvVar("TENANT_ID");
         var clientId = RequireEnvVar("CLIENT_ID");
-        var userId = Environment.GetEnvironmentVariable("USER_ID");
         var useProxy = Environment.GetEnvironmentVariable("USE_PROXY") == "true";
         var redirectUrl = Environment.GetEnvironmentVariable("REDIRECT_URL") ?? "http://localhost";
-        configData = new ConfigData(tenantId, clientId, userId, useProxy, redirectUrl);
+        configData = new ConfigData(tenantId, clientId, useProxy, redirectUrl);
       }
       catch (Exception e)
       {
