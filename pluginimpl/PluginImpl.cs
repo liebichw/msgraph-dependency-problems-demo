@@ -46,10 +46,26 @@ namespace pluginimpl
       var httpClient = GraphClientFactory.Create(proxy: proxy);
       _gsc = new GraphServiceClient(httpClient, MakeAuthProvider(loginMode, app));
 
-      var providerName = "LoginMode: " + loginMode;
-
-
       await SetCurrentUserInfo(_gsc);
+    }
+
+    public Task<UserData> GetUser()
+    {
+      if (_gsc != null)
+      {
+        throw new NotImplementedException();
+      }
+
+      throw new Exception("Not logged in yet");
+    }
+
+    public Task<PresenceData> GetPresenceData()
+    {
+      if (_gsc!=null)
+      {
+        throw new NotImplementedException(); 
+      }
+      throw new Exception("Not logged in yet");
     }
 
     private async Task SetCurrentUserInfo(GraphServiceClient graphClient)

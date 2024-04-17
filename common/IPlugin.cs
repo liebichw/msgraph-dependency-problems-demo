@@ -39,9 +39,38 @@ namespace common
     INTEGRATED_WINDOWS
   }
 
+  public sealed class UserData
+  {
+    public UserData(string id, string displayName, string email)
+    {
+      Id = id;
+      DisplayName = displayName;
+      Email = email;
+    }
+
+    public string Id { get; }
+    public string DisplayName { get; }
+
+    public string Email { get; }
+  }
+
+  public sealed class PresenceData
+  {
+    public PresenceData(string availability, string activity)
+    {
+      Availability = availability;
+      Activity = activity;
+    }
+
+    public string Availability { get; }
+    public string Activity { get; }
+  }
+
   public interface IPlugin
   {
     Task Login(LoginMode loginMode);
+    Task<UserData> GetUser();
+    Task<PresenceData> GetPresenceData();
   }
 
   public interface IPluginFactory

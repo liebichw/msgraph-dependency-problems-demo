@@ -15,7 +15,7 @@
             </StackPanel>
             <DockPanel>
                 <Label Content="User ID" DockPanel.Dock="Left" Margin="5,10"/>
-                <TextBox x:Name="TxtUserId" Margin="10" TextChanged="TxtUserId_OnTextChanged" VerticalAlignment="Center"/>
+                <TextBox x:Name="TxtUserId" Margin="10" IsReadOnly="True" VerticalAlignment="Center"/>
             </DockPanel>
             <StackPanel Orientation="Horizontal">
                 <Button Content="GetPresence" Click="GetPresence_OnClick" Margin="10" Padding="10,0"></Button>
