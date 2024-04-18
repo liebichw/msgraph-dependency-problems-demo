@@ -36,3 +36,8 @@ Following environment variables are used by this project:
   copy everything into 1 directory (executable and all DLLs from the project and the plugin) and use this path as the plugin path.
   *WANRING:* The plugin DLL filename must be the last part of this environment variable!
 - PLUGIN_FACTORY contains the full type name of the concrete factory class used. For this example, the value must be *pluginimpl.PluginMsGraph5Factory*.
+
+## Helper scripts
+
+The script *mk-setup.ps1* can be run after a full rebuild of the solution. It copies everything needed into the directory *Setup*.
+That's all it does - it sets up a usable directory structure.
