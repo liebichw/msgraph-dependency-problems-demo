@@ -41,3 +41,14 @@ Following environment variables are used by this project:
 
 The script *mk-setup.ps1* can be run after a full rebuild of the solution. It copies everything needed into the directory *Setup*.
 That's all it does - it sets up a usable directory structure.
+
+The script *run-program.ps1* can be run afterwards - it sets the needed environment variables, and runs the executable.
+*Attention*: Before using this *run-program.ps1* script, you must first set the environment variables mentioned above to values
+which are valid for your setup!
+
+## Result of the test run
+
+The executable will start fine, but trying to log in to teams will show an exception, because of missing DLLs - and a closer look will show that the
+"missing DLL" is in fact there, but with another version than expected by some other DLL.
+And because the DLL is dynamically loaded, Visual Studio does not generate a correct application config file - and even if it would do that, it would
+not help us much, because we need to get by without having to modify the original app config file due to administrative reasons.
